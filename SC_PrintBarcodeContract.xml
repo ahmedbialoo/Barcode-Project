@@ -4,11 +4,13 @@
 	<SourceCode>
 		<Declaration><![CDATA[
 [DataContractAttribute]
-internal final class SC_PrintBarcodeContract
+internal final class SC_PrintBarcodeContract implements SysOperationValidatable
 {
     private AssetId  assetId;
     private int     counts; 
     
+
+
 }
 ]]></Declaration>
 		<Methods>
@@ -33,6 +35,21 @@ internal final class SC_PrintBarcodeContract
     {
         counts = _counts;
         return counts;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validate</Name>
+				<Source><![CDATA[
+    public boolean validate()
+    {
+        if (assetId == '')
+        {
+            //Asset Id must be specified
+            return checkFailed("@SC_AseetBarcodeLabels:AssetIdRequired");
+        }
+        return true;
     }
 
 ]]></Source>
