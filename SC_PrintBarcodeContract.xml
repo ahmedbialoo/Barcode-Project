@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SC_PrintBarcodeContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class SC_PrintBarcodeContract
+{
+    private AssetId  assetId;
+    private int     counts; 
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmAssetId</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('AssetId')]
+    public AssetId parmAssetId(AssetId _assetId = assetId)
+    {
+        assetId = _assetId;
+        return assetId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCounts</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('counts'),
+        SysOperationLabelAttribute(literalstr("@SC_AseetBarcodeLabels:BarcodeCount"))]
+    public int parmCounts(int _counts = counts)
+    {
+        counts = _counts;
+        return counts;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
